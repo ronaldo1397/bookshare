@@ -1,0 +1,32 @@
+.namepage
+{
+	font-family: VNI-Top;
+	font-size: 40px;
+	color: #343a40;
+	font-weight: bold;
+}
+.slogan
+{
+	font-family: Times New Roman;
+	font-size: 15px;
+	color: #343a40; 
+}
+.font-50 {
+	font-size: 100px;
+}
+h3
+{
+	margin-top: 20px;
+}
+.nameuser{
+	font-weight: bold;
+	font-family: "Roboto";
+	font-size: 50px;
+}
+.avatar {
+	height: 100px;
+	width: 100px;
+	overflow: hidden;
+}
+.avatar > img {
+}

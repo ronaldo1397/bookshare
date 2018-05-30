@@ -11,14 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
-Route::get('namsinh/{ng}', function($ng){
-	$nam= 2018-$ng;
-	return $nam;
-});
+Route::get('user/{id}', 'UserController@trangcanhan');
+
 Route::get('sach/{id}','ViDuController@sach');
 Route::post('sach','ViDuController@post');
 Auth::routes();
