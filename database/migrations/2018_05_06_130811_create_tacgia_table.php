@@ -14,9 +14,9 @@ class CreateTacgiaTable extends Migration
     public function up()
     {
         Schema::create('tacgia', function (Blueprint $table) {
-            $table->increments('id_tacgia');
-            $table->string('hoten');
-            $table->string('mota');
+            $table->increments('id');
+            $table->string('butdanh');
+            $table->string('mota')->nullable();
             $table->timestamps();
         });
     }

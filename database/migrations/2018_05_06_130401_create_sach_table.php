@@ -14,9 +14,9 @@ class CreateSachTable extends Migration
     public function up()
     {
         Schema::create('sach', function (Blueprint $table) {
-            $table->increments('id_sach');
-            $table->string('ten');
-            $table->string('hinhanh');
+            $table->increments('id');
+            $table->string('tensach');
+            $table->string('hinhanh')->nullable();
             $table->integer('id_tacgia');
             $table->string('nhaxuatban');
             $table->text('mota');

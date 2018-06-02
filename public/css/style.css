@@ -1,3 +1,6 @@
+body {
+	font-family: 'Roboto';
+}
 .namepage
 {
 	font-family: VNI-Top;
@@ -29,4 +32,8 @@ h3
 	overflow: hidden;
 }
 .avatar > img {
+}
+.top-card {
+	position: absolute;
+    margin-left: 5px;
 }

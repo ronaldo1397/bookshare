@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class TheLoai extends Model
 {
 	protected $fillable = [
-        'id_sach', 'id_user', 'noidung'
+        'tenloai', 'mota',
     ];
-    protected $table = 'review';
+    protected $table = 'theloai';
 }

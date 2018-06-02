@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function trangcanhan($id)
+    public function trangcanhan($username)
     {
-    	$user = User::find($id);
+    	$user = User::where('username', $username)->first();
     	if($user) {
 	    	$tusach = TuSach::where('id_user', $user->id)->get();
 	    	$lishcutraodoi = YeuCau::where('id_user_send', $user->id)->orWhere('id_user_receive', $user->id)->get();

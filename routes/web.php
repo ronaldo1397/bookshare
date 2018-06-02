@@ -12,11 +12,15 @@
 */
 
 Route::get('/', 'HomeController@index');
-
-Route::get('user/{id}', 'UserController@trangcanhan');
-
-Route::get('sach/{id}','ViDuController@sach');
-Route::post('sach','ViDuController@post');
 Auth::routes();
+
+Route::get('user/{username}', 'UserController@trangcanhan');
+
+Route::get('/timsach', 'SachController@timsach')->name('themsach');
+Route::post('/timsach', 'SachController@themsach')->middleware('auth');;
+
+Route::get('sach/{id}','SachController@sach')->name('sach');
+Route::post('sach','ViDuController@post');
+
 
 Route::get('/home', 'HomeController@index')->name('home');

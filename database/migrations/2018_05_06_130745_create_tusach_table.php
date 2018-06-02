@@ -14,7 +14,7 @@ class CreateTusachTable extends Migration
     public function up()
     {
         Schema::create('tusach', function (Blueprint $table) {
-            $table->increments('id_tusach');
+            $table->increments('id');
             $table->integer('id_user');
             $table->integer('id_sach');
             $table->integer('soluong');

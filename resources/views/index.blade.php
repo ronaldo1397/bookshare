@@ -1,9 +1,9 @@
-@include('header')
-
+@extends('layouts.app')
+@section('content')
 <!-- slogan -->
 		<div class="container">
 			<div class="row">
-				<div class="col-12 text-center namepage">SHARE BOOK</div>
+				<div class="col-12 text-center namepage">SHARE YOUR BOOKS</div>
 			</div>
 			<div class="row">
 				<div class="col-12 text-center slogan">Đây là câu slogan hay hehe....</div>
@@ -44,5 +44,4 @@
 				@endif
 			</div>
 		</div>
-
-@include('footer')
+@endsection

@@ -1,5 +1,5 @@
-@include('header')
-
+@extends('layouts.app')
+@section('content')
 <div class="container">
 	<div class="row">
 		<div class="col-2 d-flex justify-content-end namepage">
@@ -10,7 +10,7 @@
 			</a>
 		</div>
 		<div class="col-10 justify-content-start">
-			<div class="nameuser">{{ $user->username }}</div>
+			<div class="nameuser">{{ $user->hoten }} ({{ $user->username }})</div>
 			<div>Đang sở hữu <b>{{$user->sosach()}}</b> sách</div>
 			<div>Giới thiệu: {{ $user->gioithieu }}</div>
 		</div>
@@ -23,14 +23,15 @@
 			</a>
 		</div>
 		<div class="col-8 d-flex justify-content-end">
-			<a href="themsach.php">
+			<a href="{{route('themsach')}}">
 			<button class="btn btn-success"> Thêm sách</button>
 			</a>
 		</div>
 	</div>
 	@endif
-	<div class="row justify-content-center">
+	<div class="row mt-2 justify-content-center">
 		<div class="col-12">
+			@include('thongbao')
 			<div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
 				<a class="nav-item nav-link active" id="nav-sachdadang-tab" data-toggle="tab" href="#nav-sachdadang" role="tab" aria-controls="nav-sachdadang" aria-selected="true">Sách đã đăng</a>
 				<a class="nav-item nav-link" id="nav-sachtraodoi-tab" data-toggle="tab" href="#nav-sachtraodoi" role="tab" aria-controls="nav-sachtraodoi" aria-selected="false">Sách đã trao đổi</a>
@@ -41,7 +42,7 @@
 			<div class="tab-pane fade show active mt-3" id="nav-sachdadang" role="tabpanel" aria-labelledby="nav-sachdadang-tab">
 				<div class="row">
 					@if(count($sach) > 0)
-						@each('sach.cuonsach', $sach, 'sach')
+						@each('sach.cuonsach_canhan', $sach, 'sach')
 					@else
 						<div class="col-12"><div class="alert alert-warning">Chưa có sách nào</div></div>
 					@endif
@@ -89,5 +90,4 @@
 			</div>
 		</div>
 	</div>
-
-@include('footer')
+@endsection

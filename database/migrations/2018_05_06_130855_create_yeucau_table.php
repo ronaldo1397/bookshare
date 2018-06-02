@@ -14,7 +14,7 @@ class CreateYeucauTable extends Migration
     public function up()
     {
         Schema::create('yeucau', function (Blueprint $table) {
-            $table->increments('id_yeucau');
+            $table->increments('id');
             $table->integer('id_user_send');
             $table->integer('id_user_receive');
             $table->integer('id_sach');

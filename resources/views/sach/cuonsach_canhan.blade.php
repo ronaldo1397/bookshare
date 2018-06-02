@@ -12,8 +12,9 @@ if(isset($sach))
 			<img class="card-img-top" src="{{$sach_url}}" alt="{{$sach->ten}}">
 		</a>
 		<div class="top-card">
-			<div class="badge badge-danger">{{date('H\gi d/m/Y',strtotime($sach->updated_at))}}</div>
-			<div class="badge badge-light">{{$sach->sohuu}} người sở hữu</div>
+			@if($sach->tinhtrang == 0)
+			<div class="badge badge-warning">Chưa duyệt</div>
+			@endif
 		</div>
 	</div>
 </div>

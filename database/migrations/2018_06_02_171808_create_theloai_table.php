@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuyenTable extends Migration
+class CreateTheloaiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateQuyenTable extends Migration
      */
     public function up()
     {
-        Schema::create('quyen', function (Blueprint $table) {
+        Schema::create('theloai', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tenquyen');
+            $table->string('tenloai');
             $table->string('mota')->nullable();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateQuyenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quyen');
+        Schema::dropIfExists('theloai');
     }
 }
