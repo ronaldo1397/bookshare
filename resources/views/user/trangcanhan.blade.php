@@ -1,93 +1,46 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-	<div class="row">
-		<div class="col-2 d-flex justify-content-end namepage">
-			<a href="trangcanhan.php">
-				<div class="rounded-circle avatar" >
-					<img src="/images/thithi.jpg " width="100px" />
-				</div>
-			</a>
-		</div>
-		<div class="col-10 justify-content-start">
-			<div class="nameuser">{{ $user->hoten }} ({{ $user->username }})</div>
-			<div>Đang sở hữu <b>{{$user->sosach()}}</b> sách</div>
-			<div>Giới thiệu: {{ $user->gioithieu }}</div>
-		</div>
-	</div>
-	@if($user->id == Auth::id())
-	<div class="row">
-		<div class="col-4">
-			<a href="chinhsuacanhan.php">
-				<button class="btn btn-success ">Chỉnh sửa trang cá nhân</button>
-			</a>
-		</div>
-		<div class="col-8 d-flex justify-content-end">
-			<a href="{{route('themsach')}}">
-			<button class="btn btn-success"> Thêm sách</button>
-			</a>
-		</div>
-	</div>
-	@endif
+	@include('user.thongtin')
 	<div class="row mt-2 justify-content-center">
 		<div class="col-12">
-			@include('thongbao')
 			<div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
-				<a class="nav-item nav-link active" id="nav-sachdadang-tab" data-toggle="tab" href="#nav-sachdadang" role="tab" aria-controls="nav-sachdadang" aria-selected="true">Sách đã đăng</a>
-				<a class="nav-item nav-link" id="nav-sachtraodoi-tab" data-toggle="tab" href="#nav-sachtraodoi" role="tab" aria-controls="nav-sachtraodoi" aria-selected="false">Sách đã trao đổi</a>
+				<a class="nav-item nav-link active" id="nav-sachdadang-tab" data-toggle="tab" href="#nav-sachdadang" role="tab" aria-controls="nav-sachdadang" aria-selected="{{session('dadang')}}">Sách đã đăng</a>
+				@if(Auth::id() == $user->id)
+				<a class="nav-item nav-link" id="nav-sachtraodoi-tab" data-toggle="tab" href="#nav-sachtraodoi" role="tab" aria-controls="nav-sachtraodoi" aria-selected="{{session('traodoi')}}">Trao đổi sách</a>
+				@endif
 			</div>
 		</div>
 		<div class="col-12 tab-content" id="nav-tabContent ">
 			<!--SACH ĐÃ ĐĂNG-->
 			<div class="tab-pane fade show active mt-3" id="nav-sachdadang" role="tabpanel" aria-labelledby="nav-sachdadang-tab">
 				<div class="row">
+					@if($user->id == Auth::id())
+					<div class="col-md-2 col-sm-6">
+						<a href="{{route('themsach')}}">
+							<div class="btn btn-outline-success w-100 h-100" style="white-space: pre-wrap;">
+								<span style="font-size: 30px;">Thêm sách</span>
+							</div>
+						</a>
+					</div>
+					@endif
 					@if(count($sach) > 0)
-						@each('sach.cuonsach_canhan', $sach, 'sach')
-					@else
-						<div class="col-12"><div class="alert alert-warning">Chưa có sách nào</div></div>
+						@foreach($sach as $s)
+							@if($s->tinhtrang > 0 )
+								@include('sach.cuonsach_canhan', ['sach' => $s])
+							@elseif($s->tinhtrang == 0 && Auth::id() == $s->id_user)
+								@include('sach.cuonsach_canhan', ['sach' => $s])
+							@endif
+						@endforeach
 					@endif
 				</div>
 			</div>
+			@if(Auth::id() == $user->id)
 			<!--SÁCH ĐÃ TRAO ĐỔI-->
 			<div class="tab-pane fade mt-3" id="nav-sachtraodoi" role="tabpanel" aria-labelledby="nav-sachtraodoi-tab">
-				<div class="row">
-					<div class="col-md-2 col-sm-6">
-						<div class="card">
-							<a href="#">
-								<img class="card-img-top" src="book/toilamotconlua.jpg" alt="Card image cap">
-							</a>
-						</div>
-					</div>
-					<div class="col-md-2 col-sm-6">
-						<div class="card">
-							<a href="#">
-								<img class="card-img-top" src="book/dungbaogiodianmotminh.jpg" alt="Card image cap">
-							</a>
-						</div>
-					</div>
-					<div class="col-md-2 col-sm-6">
-						<div class="card">
-							<a href="#">
-								<img class="card-img-top" src="book/ngayxuacomotconbo.jpg" alt="Card image cap">
-							</a>
-						</div>
-					</div>
-					<div class="col-md-2 col-sm-6">
-						<div class="card">
-							<a href="#">
-								<img class="card-img-top" src="book/neubiettramnamlahuuhan.jpg" alt="Card image cap">
-							</a>
-						</div>
-					</div>
-					<div class="col-md-2 col-sm-6">
-						<div class="card">
-							<a href="#">
-								<img class="card-img-top" src="book/battredongxanh.jpg" alt="Card image cap">
-							</a>
-						</div>
-					</div>
-				</div>
+				@include('yeucau.ds_yeucau', ['send' => $send, 'receive' => $receive])
 			</div>
+			@endif
 		</div>
 	</div>
 @endsection

@@ -23,4 +23,18 @@ class Sach extends Model
     	$tusach = TuSach::where('id_sach', $this->id)->get();
     	return count($tusach);
     }
+    public function getlistsohuuAttribute() {
+    	$tusach = TuSach::where('id_sach', $this->id)->get();
+    	return $tusach;
+    }
+    public function getimgAttribute() {
+    	$sach_img = '/images/sach/no.jpg';
+	    if($this->hinhanh != '' || $this->hinhanh != null ) {
+	    	$sach_img = $this->hinhanh;
+	    }
+	    return $sach_img;
+    }
+    public function getlinkAttribute(){
+        return '<a href="'.route('sach', $this->id).'" title="'.$this->tensach.'">'.$this->tensach.'</a>';
+    }
 }

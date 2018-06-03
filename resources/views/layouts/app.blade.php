@@ -1,5 +1,5 @@
 @include('header')
-    <main class="py-4">
+    <main class="app">
         @yield('content')
     </main>
 @include('footer')

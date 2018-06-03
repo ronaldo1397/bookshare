@@ -36,6 +36,7 @@
 		</div>
 		<!-- top user -->
 		<div class="container">
+			<h3>Top người dùng</h3>
 			<div class="row mt-4" >
 				@if(count($hinh_user) > 0)
 					@each('user.hinhuser', $hinh_user, 'user')

@@ -57,7 +57,7 @@
 						<input type="text" class="form-control" id="hinhanh" name="hinhanh">
 					</div>
 					<div class="form-group">
-						<label for="soluong">Số sách lượng bạn có</i></label>
+						<label for="soluong">Số sách lượng bạn có</label>
 						<input type="number" min="1" class="form-control" id="soluong" name="soluong" value="1">
 					</div>
 					<div class="form-group">

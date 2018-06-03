@@ -7,14 +7,12 @@ if(isset($user))
 	}
 ?>
 <div class="col-md-2 col-sm-6 text-center">
-	<a href="/user/{{$user->id}}">
+	<a href="{{route('user', ['username' => $user->username])}}">
 		<img class="rounded-circle" src="{{$icon}}" width="50%" />
 	</a>
-	<div>{{$user->username}}</div>
+	<div>{{$user->hoten}}</div>
+	<div>Sở hữu <b>{{$user->sosach}}</b> cuốn sách</div>
 </div>
 <?php 
-
 }
-
-
 ?>

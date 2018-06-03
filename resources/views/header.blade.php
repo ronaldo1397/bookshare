@@ -35,7 +35,7 @@
 								<a class="nav-link dropdown-toggle active " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sách</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 									@foreach(App\TheLoai::all() as $theloai)
-										<a class="dropdown-item" href="#">{{$theloai->tenloai}}</a>
+										<a class="dropdown-item" href="{{route('theloai', $theloai->id)}}">{{$theloai->tenloai}}</a>
 									@endforeach
 								</div>
 							</li>
@@ -46,8 +46,9 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<a class="dropdown-item" href="/user/{{Auth::user()->username}}">Tủ sách</a>
-									<a class="dropdown-item" href="#">Thông báo</a>
-									<a class="dropdown-item" href="#">Tin nhắn</a>
+									@if(Auth::user()->isAdmin)
+									<a class="dropdown-item" href="/theloai">Thể loại</a>
+									@endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -66,3 +67,4 @@
 			</div>
 		</nav>
 		<!-- body -->
+		<div class="container">@include('thongbao')</div>
