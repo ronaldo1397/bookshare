@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         DB::table('phanquyen')->insert([
         	[ 'id_quyen' => 1, 'id_user' => 1 ],
         ]);
-        DB::table('theloai')->create([
+        DB::table('theloai')->insert([
             'tenloai'  =>  'Văn Học Ngước Ngoài',
             'mota'      => ''
         ]);
