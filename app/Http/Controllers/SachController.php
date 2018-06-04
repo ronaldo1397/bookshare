@@ -53,7 +53,7 @@ class SachController extends Controller
     			'giabia'	=> $giabia,
     			'hinhanh'	=> $hinhanh,
     			'mota'		=> $mota,
-    			'tinhtrang'	=> 0
+    			'tinhtrang'	=> 1
     		]);
     		if($sach) {
 	    		foreach ($theloai as $key => $value) {
